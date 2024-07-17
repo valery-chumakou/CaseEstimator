@@ -1,0 +1,103 @@
+.body {
+    -fx-background-color:#ffffff;
+}
+
+.side-panel {
+    -fx-background-color: linear-gradient(to left, #19909b,#17798a);
+}
+
+.dashboard_btn {
+    -fx-text-fill:linear-gradient(#19909b,#17798a);
+    -fx-font-family: "Comic Sans";
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-background-color: #ffffff;
+     -fx-background-radius: 15;
+    
+}
+
+.clients_table_btn {
+    -fx-text-fill:linear-gradient(#19909b,#17798a);
+    -fx-font-family: "Comic Sans";
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-background-color: #ffffff;
+     -fx-background-radius: 15;
+}
+
+.about_btn {
+    -fx-text-fill:linear-gradient(#19909b,#17798a);
+    -fx-font-family: "Comic Sans";
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-background-color: #ffffff;
+     -fx-background-radius: 15;
+}
+
+.name_lbl {
+    -fx-text-fill:#ffffff;
+    -fx-font-family:"Comic Sans";
+    -fx-font-weight:bold;
+    -fx-text-alignment: CENTER;
+    -fx-font-size:15px;
+}
+
+.greeting_lbl {
+    -fx-text-fill:#ffffff;
+    -fx-font-family:"Comic Sans"; 
+    -fx-font-weight:bold;
+    -fx-text-alignment: CENTER;
+    -fx-font-size:15px;
+}
+
+.exit_lbl {
+    -fx-background-image: url("exit.png");
+    -fx-background-size:100% 100%;
+}
+.labels {
+    -fx-font-family:"Comic Sans";
+    -fx-font-weight:bold;
+    -fx-text-alignment: CENTER;
+    -fx-font-size:20px;
+    -fx-text-fill:linear-gradient(#19909b,#17798a);
+}
+.about_lbl {
+    -fx-background-image: url("about.png");
+    -fx-background-size:100% 100%;
+}
+
+.clients_lbl {
+    -fx-background-image: url("clients.png");
+    -fx-background-size:100% 100%;
+}
+
+.dashboard_lbl {
+    -fx-background-image: url("dashboard.png");
+    -fx-background-size:100% 100%;
+}
+.appointments_lbl {
+    -fx-background-image: url("app_lbl.png");
+    -fx-background-size:100% 100%;
+}
+.exit_btn {
+    -fx-text-fill:linear-gradient(#19909b,#17798a);
+    -fx-font-family: "Comic Sans";
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-background-color: #ffffff;
+     -fx-background-radius: 15;
+}
+.billing_lbl {
+    -fx-background-image: url("billing.png");
+    -fx-background-size:100% 100%;
+}
+
+.billing_btn {
+    -fx-text-fill:linear-gradient(#19909b,#17798a);
+    -fx-font-family: "Comic Sans";
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-background-color: #ffffff;
+     -fx-background-radius: 15;
+}
+ 

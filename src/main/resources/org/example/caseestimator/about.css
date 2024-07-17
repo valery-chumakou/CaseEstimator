@@ -1,0 +1,23 @@
+.body {
+    -fx-background-color:#ffffff;
+}
+
+.about_lbl {
+    -fx-font-family:"Comic Sans";
+    -fx-font-weight:bold;
+    -fx-text-alignment: CENTER;
+    -fx-font-size:20px;
+    -fx-text-fill:linear-gradient(#19909b,#17798a);
+}
+.image {
+    -fx-background-image: url("boy.jpg");
+    -fx-background-size:100% 100%;
+}
+
+.name_lbl {
+    -fx-font-family:"Comic Sans";
+    -fx-font-weight:bold;
+    -fx-text-alignment: CENTER;
+    -fx-font-size:20px;
+    -fx-text-fill:linear-gradient(#19909b,#17798a);
+}

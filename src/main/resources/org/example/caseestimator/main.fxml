@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  Copyright (c) 2015, 2019, Gluon and/or its affiliates.
+  All rights reserved. Use is subject to license terms.
+
+  This file is available and licensed under the following license:
+
+  Redistribution and use in source and binary forms, with or without
+  modification, are permitted provided that the following conditions
+  are met:
+
+  - Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+  - Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in
+    the documentation and/or other materials provided with the distribution.
+  - Neither the name of Oracle Corporation nor the names of its
+    contributors may be used to endorse or promote products derived
+    from this software without specific prior written permission.
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+  A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+  OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<VBox prefHeight="557.0" prefWidth="825.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.caseestimator.Main_Controller">
+  <children>
+    <AnchorPane fx:id="base_panel" maxHeight="-1.0" maxWidth="-1.0" prefHeight="577.0" prefWidth="825.0" VBox.vgrow="ALWAYS">
+         <children>
+            <Pane fx:id="side_panel" prefHeight="557.0" prefWidth="243.0" styleClass="side-panel" stylesheets="@main.css" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Button fx:id="dashboard_btn" layoutX="79.0" layoutY="160.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="122.0" styleClass="dashboard_btn" stylesheets="@main.css" text="Dashboard" />
+                  <Label fx:id="exit_lbl" layoutX="32.0" layoutY="469.0" prefHeight="36.0" prefWidth="35.0" styleClass="exit_lbl" stylesheets="@main.css" text=" " />
+                  <Button fx:id="clients_btn" layoutX="79.0" layoutY="210.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="122.0" styleClass="clients_table_btn" stylesheets="@main.css" text="Clients" />
+                  <Button fx:id="about_btn" layoutX="79.0" layoutY="344.0" mnemonicParsing="false" onAction="#openAboutScene" prefHeight="26.0" prefWidth="122.0" styleClass="about_btn" stylesheets="@main.css" text="About" />
+                  <Label fx:id="greeting_lbl" layoutX="18.0" layoutY="22.0" prefHeight="26.0" prefWidth="122.0" styleClass="greeting_lbl" stylesheets="@main.css" text=" " textFill="WHITE">
+                     <font>
+                        <Font size="11.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="name_lbl" layoutX="137.0" layoutY="22.0" prefHeight="26.0" prefWidth="92.0" styleClass="name_lbl" stylesheets="@main.css" text=" " textFill="WHITE">
+                     <font>
+                        <Font size="11.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="payments_btn" layoutX="79.0" layoutY="301.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="122.0" styleClass="clients_table_btn" stylesheets="@main.css" text="Payments" />
+                  <Label layoutX="31.0" layoutY="157.0" prefHeight="36.0" prefWidth="35.0" styleClass="dashboard_lbl" stylesheets="@main.css" text=" " />
+                  <Label layoutX="27.0" layoutY="207.0" prefHeight="36.0" prefWidth="42.0" styleClass="clients_lbl" stylesheets="@main.css" text=" " />
+                  <Label layoutX="27.0" layoutY="341.0" prefHeight="36.0" prefWidth="42.0" styleClass="about_lbl" stylesheets="@main.css" text=" " />
+                  <Label layoutX="31.0" layoutY="301.0" prefHeight="29.0" prefWidth="35.0" styleClass="appointments_lbl" stylesheets="@main.css" text=" " />
+                  <Button fx:id="about_btn1" layoutX="79.0" layoutY="472.0" mnemonicParsing="false" onAction="#closeProgram" prefHeight="26.0" prefWidth="122.0" styleClass="exit_btn" stylesheets="@main.css" text="Exit" />
+                  <Line endX="100.0" layoutX="119.0" layoutY="447.0" startX="-100.0" stroke="WHITE" />
+                  <Line endX="100.0" layoutX="119.0" layoutY="64.0" startX="-100.0" stroke="WHITE" />
+                  <Label layoutX="27.0" layoutY="253.0" prefHeight="36.0" prefWidth="42.0" styleClass="billing_lbl" stylesheets="@main.css" text=" " />
+                  <Button fx:id="billing_btn" layoutX="76.0" layoutY="256.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="122.0" styleClass="billing_btn" stylesheets="@main.css" text="Billing" />
+               </children>
+            </Pane>
+            <Pane fx:id="main_panel" layoutX="243.0" prefHeight="557.0" prefWidth="587.0" />
+         </children>
+    </AnchorPane>
+  </children>
+</VBox>

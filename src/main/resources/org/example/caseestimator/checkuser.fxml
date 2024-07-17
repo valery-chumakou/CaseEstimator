@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Point3D?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="406.0" prefWidth="564.0" styleClass="body" stylesheets="@checkuser.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.caseestimator.CheckUser">
+   <children>
+      <Pane layoutX="306.0" prefHeight="406.0" prefWidth="258.0" styleClass="side-panel" stylesheets="@checkuser.css">
+         <children>
+            <Label layoutX="39.0" layoutY="107.0" prefHeight="21.0" prefWidth="91.0" styleClass="labels" stylesheets="@checkuser.css" text="Username" />
+            <Label layoutX="39.0" layoutY="178.0" prefHeight="21.0" prefWidth="91.0" styleClass="labels" stylesheets="@checkuser.css" text="Password" />
+            <Button fx:id="login_btn" layoutX="34.0" layoutY="284.0" mnemonicParsing="false" onAction="#handleExistingUser" prefHeight="25.0" prefWidth="191.0" styleClass="log_btn" stylesheets="@checkuser.css" text="Log In" />
+            <TextField fx:id="existing_username" layoutX="39.0" layoutY="132.0" prefHeight="25.0" prefWidth="182.0" styleClass="fields" stylesheets="@checkuser.css" />
+            <PasswordField fx:id="existing_password" layoutX="39.0" layoutY="203.0" prefHeight="25.0" prefWidth="182.0" styleClass="fields" stylesheets="@checkuser.css" />
+            <Label layoutX="22.0" layoutY="32.0" prefHeight="36.0" prefWidth="216.0" styleClass="labels" stylesheets="@checkuser.css" text="Enter your login credentials" />
+         </children>
+         <rotationAxis>
+            <Point3D z="56.0" />
+         </rotationAxis>
+      </Pane>
+      <Text fill="WHITE" layoutX="33.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Case Estimator" wrappingWidth="181.66664123535156">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="43.0" layoutY="387.0" strokeType="OUTSIDE" strokeWidth="0.0" text="© Created by Valery Chumakou" wrappingWidth="216.0">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="33.0" layoutY="121.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Case Estimator is a Billing Management System for Bankruptcy Law Office that allows you to manage clinets, billing and appointments. Login to have a look for yourself..." wrappingWidth="216.0">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Text>
+   </children>
+
+</Pane>
