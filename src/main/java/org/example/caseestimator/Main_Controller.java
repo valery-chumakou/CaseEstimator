@@ -96,6 +96,18 @@ public class Main_Controller implements Initializable {
     }
 
     @FXML
+    private void openClientsTable(ActionEvent event) throws  IOException {
+        main_panel.getChildren().clear();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("clients.fxml"));
+        Parent clients = loader.load();
+        main_panel.getChildren().add(clients);
+        isAboutBtnSelected = false;
+        isDashboardBtnSelected = false;
+        isClientsBtnSelected = true;
+
+    }
+
+    @FXML
     private void openAboutScene(ActionEvent event) throws  IOException {
         main_panel.getChildren().clear();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("about.fxml"));

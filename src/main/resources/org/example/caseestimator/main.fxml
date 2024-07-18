@@ -48,7 +48,7 @@
                <children>
                   <Button fx:id="dashboard_btn" layoutX="79.0" layoutY="160.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="122.0" styleClass="dashboard_btn" stylesheets="@main.css" text="Dashboard" />
                   <Label fx:id="exit_lbl" layoutX="32.0" layoutY="469.0" prefHeight="36.0" prefWidth="35.0" styleClass="exit_lbl" stylesheets="@main.css" text=" " />
-                  <Button fx:id="clients_btn" layoutX="79.0" layoutY="210.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="122.0" styleClass="clients_table_btn" stylesheets="@main.css" text="Clients" />
+                  <Button fx:id="clients_btn" layoutX="79.0" layoutY="210.0" mnemonicParsing="false" onAction="#openClientsTable" prefHeight="26.0" prefWidth="122.0" styleClass="clients_table_btn" stylesheets="@main.css" text="Clients" />
                   <Button fx:id="about_btn" layoutX="79.0" layoutY="344.0" mnemonicParsing="false" onAction="#openAboutScene" prefHeight="26.0" prefWidth="122.0" styleClass="about_btn" stylesheets="@main.css" text="About" />
                   <Label fx:id="greeting_lbl" layoutX="18.0" layoutY="22.0" prefHeight="26.0" prefWidth="122.0" styleClass="greeting_lbl" stylesheets="@main.css" text=" " textFill="WHITE">
                      <font>
