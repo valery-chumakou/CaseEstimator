@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane prefHeight="542.0" prefWidth="1033.0" styleClass="body" stylesheets="@clients.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<Pane prefHeight="542.0" prefWidth="1033.0" styleClass="body" stylesheets="@clients.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.caseestimator.Clients_Controller">
    <children>
       <TableView fx:id="clients_table" layoutX="47.0" layoutY="40.0" prefHeight="374.0" prefWidth="939.0" styleClass="clients-list" stylesheets="@clients.css">
          <columns>
@@ -24,12 +24,12 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <Button fx:id="create_new_client" layoutX="221.0" layoutY="457.0" mnemonicParsing="false"  prefHeight="25.0" prefWidth="110.0" styleClass="new_client_btn" stylesheets="@clients.css" text="New Client" />
+      <Button fx:id="create_new_client" layoutX="221.0" layoutY="457.0" mnemonicParsing="false" onAction="#add_client_btn" prefHeight="25.0" prefWidth="110.0" styleClass="new_client_btn" stylesheets="@clients.css" text="New Client" />
       <Label fx:id="disp_name" layoutX="510.0" layoutY="446.0" prefHeight="25.0" prefWidth="119.0" text=" " />
       <Label fx:id="disp_status" layoutX="629.0" layoutY="446.0" prefHeight="25.0" prefWidth="119.0" text=" " />
-      <Button fx:id="delete_btn" layoutX="342.0" layoutY="457.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="92.0" styleClass="delete_btn" stylesheets="@clients.css" text="Delete" />
+      <Button fx:id="delete_btn" layoutX="342.0" layoutY="457.0" mnemonicParsing="false" onAction="#deleteClient" prefHeight="27.0" prefWidth="92.0" styleClass="delete_btn" stylesheets="@clients.css" text="Delete" />
       <Button fx:id="biling_btn" layoutX="548.0" layoutY="456.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" styleClass="billing_btn" stylesheets="@clients.css" text="Biling" />
-      <Button fx:id="edit_btn" layoutX="445.0" layoutY="456.0" mnemonicParsing="false"  prefHeight="25.0" prefWidth="92.0" styleClass="billing_btn" stylesheets="@clients.css" text="Edit" />
+      <Button fx:id="edit_btn" layoutX="445.0" layoutY="456.0" mnemonicParsing="false" onAction="#editClient" prefHeight="25.0" prefWidth="92.0" styleClass="billing_btn" stylesheets="@clients.css" text="Edit" />
       <Text fill="WHITE" layoutX="70.0" layoutY="478.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Avail. Actions:" wrappingWidth="188.9999542236328">
          <font>
             <Font name="System Bold" size="19.0" />
