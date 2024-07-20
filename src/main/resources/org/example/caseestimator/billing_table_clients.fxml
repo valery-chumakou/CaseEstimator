@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+
+<TableView fx:id="billing_clients_table" prefHeight="374.0" prefWidth="939.0" styleClass="clients-list" stylesheets="@clients.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.caseestimator.Billing_Table_Clients">
+   <columns>
+      <TableColumn fx:id="col_name" prefWidth="126.00000381469727" styleClass="columns" text="Name" />
+      <TableColumn fx:id="col_chapter" prefWidth="121.33334350585938" styleClass="columns" text="Chapter" />
+      <TableColumn fx:id="col_type" prefWidth="142.66668701171875" styleClass="columns" text="Type" />
+      <TableColumn fx:id="col_status" prefWidth="129.33331298828125" styleClass="columns" text="Current Status" />
+      <TableColumn fx:id="col_filingDate" prefWidth="163.3333740234375" styleClass="columns" text="Filing Date" />
+      <TableColumn fx:id="col_of_no" minWidth="0.0" prefWidth="170.6666259765625" styleClass="columns" text="Office No." />
+   </columns>
+   <columnResizePolicy>
+      <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+   </columnResizePolicy>
+</TableView>

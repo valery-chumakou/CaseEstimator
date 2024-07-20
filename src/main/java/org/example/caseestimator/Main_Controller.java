@@ -119,6 +119,17 @@ public class Main_Controller implements Initializable {
 
         updateButtonStyles();
     }
+@FXML
+    private void openBilling() throws IOException {
+        main_panel.getChildren().clear();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("billing_table_clients.fxml"));
+        Parent about = loader.load();
+        main_panel.getChildren().add(about);
+        isAboutBtnSelected = true;
+        isClientsBtnSelected = false;
+        isDashboardBtnSelected = true;
+        updateButtonStyles();
+    }
 
     private void updateButtonStyles() {
         about_btn.setStyle(getButtonStyle(isAboutBtnSelected));
