@@ -1,30 +1,29 @@
 package org.example.caseestimator;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 public class Billing extends Client{
-    private Integer rate;
+    private int rate;
     private String tasks;
-    private Integer timeSpent;
+    private String timeSpent;
     private String user;
-    private Integer officeNo;
-    private Date date;
+    private String officeNo;
+    private LocalDate date;
 
-    public Billing(Integer rate, String tasks, Integer timeSpent, String user, Integer officeNo, Date date) {
+    public Billing(int rate, String tasks, String timeSpent, String user, String officeNo, LocalDate date) {
         this.rate = rate;
         this.tasks = tasks;
         this.timeSpent = timeSpent;
         this.user = user;
-        this.officeNo = officeNo;
+        this.officeNo = String.valueOf(officeNo);
         this.date = date;
     }
 
-    public Integer getRate() {
+    public int getRate() {
         return rate;
     }
 
-    public void setRate(Integer rate) {
+    public void setRate(int rate) {
         this.rate = rate;
     }
 
@@ -36,11 +35,11 @@ public class Billing extends Client{
         this.tasks = tasks;
     }
 
-    public Integer getTimeSpent() {
+    public String getTimeSpent() {
         return timeSpent;
     }
 
-    public void setTimeSpent(Integer timeSpent) {
+    public void setTimeSpent(String timeSpent) {
         this.timeSpent = timeSpent;
     }
 
@@ -52,19 +51,20 @@ public class Billing extends Client{
         this.user = user;
     }
 
-    public Integer getOfficeNo() {
+    public String getOfficeNo() {
         return officeNo;
     }
 
-    public void setOfficeNo(Integer officeNo) {
-        this.officeNo = officeNo;
+    public void setOfficeNo(String officeNo) {
+        this.officeNo = String.valueOf(officeNo);
     }
 
-    public Date getDate() {
-        return date;
+    public String getDate() {
+        return LocalDate.now().toString();
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
+
 }

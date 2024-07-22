@@ -9,7 +9,7 @@
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.Pane?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="583.0" prefWidth="948.0" styleClass="body" stylesheets="@billing_table_records.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.caseestimator.Billing_Table_Records">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="583.0" prefWidth="948.0" styleClass="body" stylesheets="@billing_table_records.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.caseestimator.Billing_Table_Records"> 
    <children>
       <TableView fx:id="billing_table_records" layoutX="100.0" layoutY="55.0" prefHeight="316.0" prefWidth="540.0" styleClass="table_view" stylesheets="@billing_table_records.css">
          <columns>
@@ -21,7 +21,7 @@
             <TableColumn fx:id="col_date" prefWidth="86.66668701171875" styleClass="column-header" text="Date " />
          </columns>
       </TableView>
-      <Button fx:id="add_btn" layoutX="21.0" layoutY="391.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="105.0" styleClass="add_btn" stylesheets="@billing_table_records.css" text="Create task" />
+      <Button fx:id="add_btn" layoutX="21.0" layoutY="391.0" mnemonicParsing="false" onAction="#insertBillingInfo" prefHeight="27.0" prefWidth="105.0" styleClass="add_btn" stylesheets="@billing_table_records.css" text="Create task" />
       <Button fx:id="calc_button" layoutX="495.0" layoutY="391.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="83.0" styleClass="calculate_btn" stylesheets="@billing_table_records.css" text="Calculate" />
       <Button fx:id="save_btn" layoutX="359.0" layoutY="391.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="114.0" styleClass="excel_btn" stylesheets="@billing_table_records.css" text="Save in Excel" />
       <Button fx:id="invoice_btn" layoutX="249.0" layoutY="391.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="94.0" styleClass="generate_btn" stylesheets="@billing_table_records.css" text="Generate " />
@@ -35,11 +35,14 @@
          </children>
       </Pane>
       <ComboBox fx:id="menu_btn" layoutX="773.0" layoutY="59.0" prefHeight="29.0" prefWidth="123.0" promptText="Select Task" styleClass="combo_btn" stylesheets="@billing_table_records.css" />
-      <TextField fx:id="time_spent_field" layoutX="777.0" layoutY="107.0" prefHeight="25.0" prefWidth="114.0" />
-      <Label layoutX="777.0" layoutY="167.0" styleClass="time_lbl" stylesheets="@billing_table_records.css" text="Time spent" />
-      <TextField fx:id="rate_field" layoutX="778.0" layoutY="213.0" prefHeight="25.0" prefWidth="114.0" />
-      <Label layoutX="817.0" layoutY="264.0" styleClass="rate_lbl" stylesheets="@billing_table_records.css" text="Rate" />
-      <Button fx:id="payment_btn" layoutX="786.0" layoutY="310.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="132.0" styleClass="calculate_btn" text="Make a payment" />
+      <Label layoutX="759.0" layoutY="292.0" styleClass="time_lbl" stylesheets="@billing_table_records.css" text="Time spent" />
+      <TextField fx:id="rate_field" layoutX="765.0" layoutY="371.0" prefHeight="25.0" prefWidth="114.0" />
+      <Label layoutX="804.0" layoutY="420.0" styleClass="rate_lbl" stylesheets="@billing_table_records.css" text="Rate" />
+      <Button fx:id="payment_btn" layoutX="756.0" layoutY="447.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="132.0" styleClass="calculate_btn" text="Make a payment" />
+      <Label fx:id="time_label" layoutX="778.0" layoutY="106.0" prefHeight="25.0" prefWidth="105.0" text=" " />
+      <Button fx:id="stop_btn" layoutX="857.0" layoutY="181.0" mnemonicParsing="false" onAction="#stopTimer" text="stop" />
+      <Button fx:id="start_btn" layoutX="793.0" layoutY="181.0" mnemonicParsing="false" onAction="#startTimer" text="start" />
+      <Button fx:id="time_btn" layoutX="771.0" layoutY="237.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="83.0" styleClass="calculate_btn" stylesheets="@billing_table_records.css" text="Add Time" />
    </children>
    <effect>
       <DropShadow />
