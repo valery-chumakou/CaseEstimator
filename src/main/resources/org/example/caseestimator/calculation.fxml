@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.Pane?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="body" stylesheets="@../../../../../../../Get_Paid_Project/src/main/resources/org/getpaid/get_paid_project/calculation.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.getpaid.get_paid_project.Calculation">
+   <children>
+      <Label layoutX="129.0" layoutY="111.0" styleClass="hours_spent_lbl" stylesheets="@../../../../../../../Get_Paid_Project/src/main/resources/org/getpaid/get_paid_project/calculation.css" text="Total Hours spent" />
+      <Label fx:id="total_hours" layoutX="300.0" layoutY="108.0" prefHeight="23.0" prefWidth="146.0" styleClass="hours_spent_fl" stylesheets="@../../../../../../../Get_Paid_Project/src/main/resources/org/getpaid/get_paid_project/calculation.css" text=" " />
+      <Label layoutX="129.0" layoutY="143.0" styleClass="total_amount_lbl" stylesheets="@../../../../../../../Get_Paid_Project/src/main/resources/org/getpaid/get_paid_project/calculation.css" text="Total Amount" />
+      <Label fx:id="total_amount" layoutX="300.0" layoutY="140.0" prefHeight="23.0" prefWidth="146.0" styleClass="total_amount_fl" stylesheets="@../../../../../../../Get_Paid_Project/src/main/resources/org/getpaid/get_paid_project/calculation.css" text=" " />
+      <Label layoutX="132.0" layoutY="173.0" styleClass="att_time_lbl" stylesheets="@../../../../../../../Get_Paid_Project/src/main/resources/org/getpaid/get_paid_project/calculation.css" text="Attorney's time" />
+      <Label layoutX="127.0" layoutY="207.0" prefHeight="21.0" prefWidth="129.0" styleClass="para_time_lbl" stylesheets="@../../../../../../../Get_Paid_Project/src/main/resources/org/getpaid/get_paid_project/calculation.css" text="Paralegal's time" />
+      <Label fx:id="attorney_time" layoutX="300.0" layoutY="173.0" prefHeight="23.0" prefWidth="146.0" styleClass="att_time_fl" stylesheets="@../../../../../../../Get_Paid_Project/src/main/resources/org/getpaid/get_paid_project/calculation.css" text=" " />
+      <Label fx:id="paralegal_time" layoutX="300.0" layoutY="204.0" prefHeight="23.0" prefWidth="146.0" styleClass="para_time_fl" stylesheets="@../../../../../../../Get_Paid_Project/src/main/resources/org/getpaid/get_paid_project/calculation.css" text=" " />
+   </children>
+</Pane>

@@ -34,7 +34,7 @@
             <Label fx:id="amount_paid" layoutX="395.0" layoutY="5.0" prefHeight="34.0" prefWidth="114.0" styleClass="outst_amount" stylesheets="@billing_table_records.css" text="= " />
          </children>
       </Pane>
-      <ComboBox fx:id="menu_btn" layoutX="773.0" layoutY="59.0" prefHeight="29.0" prefWidth="123.0" promptText="Select Task" styleClass="combo_btn" stylesheets="@billing_table_records.css" />
+      <ComboBox fx:id="menu_btn" layoutX="717.0" layoutY="55.0" prefHeight="29.0" prefWidth="123.0" promptText="Select Task" styleClass="combo_btn" stylesheets="@billing_table_records.css" />
       <Label layoutX="759.0" layoutY="292.0" styleClass="time_lbl" stylesheets="@billing_table_records.css" text="Time spent" />
       <TextField fx:id="rate_field" layoutX="765.0" layoutY="371.0" prefHeight="25.0" prefWidth="114.0" />
       <Label layoutX="804.0" layoutY="420.0" styleClass="rate_lbl" stylesheets="@billing_table_records.css" text="Rate" />
@@ -42,7 +42,6 @@
       <Label fx:id="time_label" layoutX="778.0" layoutY="106.0" prefHeight="25.0" prefWidth="105.0" text=" " />
       <Button fx:id="stop_btn" layoutX="857.0" layoutY="181.0" mnemonicParsing="false" onAction="#stopTimer" text="stop" />
       <Button fx:id="start_btn" layoutX="793.0" layoutY="181.0" mnemonicParsing="false" onAction="#startTimer" text="start" />
-      <Button fx:id="time_btn" layoutX="771.0" layoutY="237.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="83.0" styleClass="calculate_btn" stylesheets="@billing_table_records.css" text="Add Time" />
    </children>
    <effect>
       <DropShadow />

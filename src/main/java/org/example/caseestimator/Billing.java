@@ -1,16 +1,17 @@
 package org.example.caseestimator;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 
 public class Billing extends Client{
     private int rate;
     private String tasks;
-    private String timeSpent;
+    private LocalTime timeSpent;
     private String user;
     private String officeNo;
     private LocalDate date;
 
-    public Billing(int rate, String tasks, String timeSpent, String user, String officeNo, LocalDate date) {
+    public Billing(int rate, String tasks, LocalTime timeSpent, String user, String officeNo, LocalDate date) {
         this.rate = rate;
         this.tasks = tasks;
         this.timeSpent = timeSpent;
@@ -35,11 +36,11 @@ public class Billing extends Client{
         this.tasks = tasks;
     }
 
-    public String getTimeSpent() {
+    public LocalTime getTimeSpent() {
         return timeSpent;
     }
 
-    public void setTimeSpent(String timeSpent) {
+    public void setTimeSpent(LocalTime timeSpent) {
         this.timeSpent = timeSpent;
     }
 
@@ -59,8 +60,8 @@ public class Billing extends Client{
         this.officeNo = String.valueOf(officeNo);
     }
 
-    public String getDate() {
-        return LocalDate.now().toString();
+    public LocalDate getDate() {
+        return date;
     }
 
     public void setDate(LocalDate date) {

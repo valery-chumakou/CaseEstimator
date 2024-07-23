@@ -24,7 +24,7 @@ import java.util.ResourceBundle;
 
 public class Billing_Table_Clients implements Initializable {
     private ObservableList<Client> clients = FXCollections.observableArrayList();
-    private ObservableList<String> billingList = FXCollections.observableArrayList();
+    private ObservableList<Billing> billingList = FXCollections.observableArrayList();
     private Client selectedClient;
     @FXML
     private TableView<Client> billing_clients_table;
