@@ -2,9 +2,7 @@ package org.example.caseestimator;
 
 import javafx.animation.*;
 import javafx.application.Platform;
-import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -15,7 +13,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.io.IOException;
 import java.sql.*;
-import java.time.DateTimeException;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -47,6 +44,8 @@ public class Billing_Table_Records {
     @FXML
     private TableColumn<Billing, String> col_date;
     @FXML
+    private TableColumn<Billing, Double>col_sum;
+    @FXML
     private TextField rate_field;
     private Timeline timer;
     @FXML
@@ -62,6 +61,7 @@ public class Billing_Table_Records {
     @FXML
     private Label paralegal_time;
 
+    private int sum;
     @FXML
     private Button start_btn;
 
@@ -79,9 +79,15 @@ public class Billing_Table_Records {
     private final Stopwatch stopwatch = new Stopwatch();
     private Instant startTime;
 
+    public Billing_Table_Records() {
+
+    }
+    public Billing_Table_Records(String user) {
+        this.loggedInUser = getLoggedInUser;
+    }
+
     public void initialize(String officeNo, ObservableList<Billing> billingList) throws IOException {
-        menu_btn.setItems(FXCollections.observableArrayList("Option 1", "Option 2", "Option 3"));
-        this.officeNo = officeNo;
+         this.officeNo = officeNo;
         this.loggedInUser = UserStore.getLoggedInUser();
         col_no.setCellValueFactory(new PropertyValueFactory<>("officeNo"));
         col_rate.setCellValueFactory(new PropertyValueFactory<>("rate"));
@@ -89,6 +95,7 @@ public class Billing_Table_Records {
         col_date.setCellValueFactory(new PropertyValueFactory<>("date"));
         col_user.setCellValueFactory(new PropertyValueFactory<>("user"));
         col_time.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getTimeSpent().toString()));
+        col_sum.setCellValueFactory(new PropertyValueFactory<>("Sum"));
         retrieveBillingData(officeNo); //
         populateBillingTable();
         // Clear existing data
@@ -106,35 +113,6 @@ public class Billing_Table_Records {
         });
     }
 
-    @FXML
-    public void startTimer() {
-        stopwatch.startTimer();
-        startTime = Instant.now();
-        timer = new Timeline();
-        timer.play();
-        scheduler = Executors.newSingleThreadScheduledExecutor();
-        scheduler.scheduleAtFixedRate(() -> Platform.runLater(() -> {
-            updateLabel();
-        }), 0, 1000, TimeUnit.MILLISECONDS);
-    }
-
-    @FXML
-    public void stopTimer() {
-        stopwatch.stopTimer();
-        timer.stop();
-        scheduler.shutdownNow();
-    }
-
-    @FXML
-    public void updateLabel() {
-        if (startTime == null) return;
-        long seconds = ChronoUnit.SECONDS.between(startTime, Instant.now());
-        long minutes = seconds / 60;
-        long hours = minutes / 60;
-
-        String timeElapsed = String.format("%02d:%02d:%02d", hours % 24, minutes % 60, seconds % 60);
-        time_label.setText(timeElapsed);
-    }
 
     public void populateBillingTable() {
         billing_table_records.setItems(billingList);
@@ -166,6 +144,7 @@ public class Billing_Table_Records {
                 preparedStatement.setString(4, officeNo);
                 preparedStatement.setString(5, loggedInUser);
                 preparedStatement.setDate(6, Date.valueOf(LocalDate.now()));
+
                 LocalTime timeSpent = LocalTime.parse(timeSpentString, DateTimeFormatter.ofPattern("HH:mm:ss"));
 
                 int rowsInserted = preparedStatement.executeUpdate();
@@ -174,13 +153,13 @@ public class Billing_Table_Records {
                     Platform.runLater(() -> {
                         // Update your UI here
                         // For example:
-                        billingList.add(new Billing(rate, tasks, timeSpent, loggedInUser, officeNo, LocalDate.now()));
+                        billingList.add(new Billing(rate, tasks, timeSpent, loggedInUser, officeNo, LocalDate.now(), (double) sum));
                     });
                 }
             }
             LocalTime timeSpent = LocalTime.parse(timeSpentString, DateTimeFormatter.ofPattern("HH:mm:ss"));
             User user = new User(loggedInUser);
-            Billing newBilling = new Billing(rate, tasks, timeSpent, loggedInUser, officeNo, LocalDate.now());
+            Billing newBilling = new Billing(rate, tasks, timeSpent, loggedInUser, officeNo, LocalDate.now(), (double) sum);
             billingList.add(newBilling);
             billing_table_records.setItems(billingList);
             populateBillingTable();
@@ -190,9 +169,7 @@ public class Billing_Table_Records {
     }
 
 
-    // Initialize your table view with a new ObservableList of Billing objects
 
-    // In your retrieveBillingData method, add Billing objects to the observable list
     public void retrieveBillingData(String officeNumber) throws IOException {
 
         try {
@@ -212,8 +189,8 @@ public class Billing_Table_Records {
                 LocalTime timeSpent = LocalTime.parse(timeSpentString, DateTimeFormatter.ofPattern("HH:mm:ss"));
                 User user = new User(userName);
 
-                 if (date != null) {
-                    Billing billing = new Billing(rate, tasks, timeSpent, userName, officeNumber, LocalDate.parse(date));
+                if (date != null) {
+                    Billing billing = new Billing(rate, tasks, timeSpent, userName, officeNumber, LocalDate.parse(date), (double) sum);
                     billingList.add(billing); // Add the Billing object to the observable list
                 }
             }
@@ -223,9 +200,12 @@ public class Billing_Table_Records {
         billing_table_records.setItems(billingList); // Set the updated list to the table view
         populateBillingTable();
     }
+    public void refreshTable() {
+        billing_table_records.setItems(billingList);
+    }
 
 
     public void setLoggedInUser(String user) {
-            this.loggedInUser = UserStore.getLoggedInUser();
-        }
+        this.loggedInUser = UserStore.getLoggedInUser();
+    }
 }

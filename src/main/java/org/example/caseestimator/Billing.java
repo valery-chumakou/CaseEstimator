@@ -10,14 +10,25 @@ public class Billing extends Client{
     private String user;
     private String officeNo;
     private LocalDate date;
+    private Double sum;
+    private Billing_Table_Records billingTableRecords;
 
-    public Billing(int rate, String tasks, LocalTime timeSpent, String user, String officeNo, LocalDate date) {
+    public Billing(int rate, String tasks, LocalTime timeSpent, String user, String officeNo, LocalDate date, Double sum) {
         this.rate = rate;
         this.tasks = tasks;
         this.timeSpent = timeSpent;
         this.user = user;
         this.officeNo = String.valueOf(officeNo);
         this.date = date;
+        this.sum = sum;
+    }
+
+    public Double getSum() {
+        return sum;
+    }
+
+    public void setSum(Double sum) {
+        this.sum = sum;
     }
 
     public int getRate() {
@@ -67,5 +78,6 @@ public class Billing extends Client{
     public void setDate(LocalDate date) {
         this.date = date;
     }
+
 
 }
