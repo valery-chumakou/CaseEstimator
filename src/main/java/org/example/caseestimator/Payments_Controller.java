@@ -56,4 +56,8 @@ public class Payments_Controller  {
 
 
     }
+
+    public void setLoggedInUser(String user) {
+        this.loggedInUser = UserStore.getLoggedInUser();
+    }
 }
