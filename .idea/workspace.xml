@@ -4,17 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5f42c5f1-9c5f-4d25-ad49-5f9a9f6b6a7b" name="Changes" comment="corrected stopwatch">
+    <list default="true" id="5f42c5f1-9c5f-4d25-ad49-5f9a9f6b6a7b" name="Changes" comment="corrected billing table">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/caseestimator/Add_Task_Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/caseestimator/Add_Task_Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/caseestimator/Billing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/caseestimator/Billing.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/caseestimator/Billing_Table_Records.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/caseestimator/Billing_Table_Records.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/caseestimator/CheckUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/caseestimator/CheckUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/caseestimator/Main_Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/caseestimator/Main_Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/caseestimator/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/caseestimator/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/caseestimator/UserStore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/caseestimator/UserStore.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/caseestimator/billing_table_records.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/caseestimator/billing_table_records.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/caseestimator/main.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/caseestimator/main.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -141,7 +132,15 @@
       <option name="project" value="LOCAL" />
       <updated>1721960481545</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="corrected billing table">
+      <option name="closed" value="true" />
+      <created>1722399285061</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1722399285061</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -149,8 +148,8 @@
     <MESSAGE value="implemented edit client method" />
     <MESSAGE value="created a new scene for billing" />
     <MESSAGE value="stopwatch for tasks added" />
-    <MESSAGE value="corrected billing table" />
     <MESSAGE value="corrected stopwatch" />
-    <option name="LAST_COMMIT_MESSAGE" value="corrected stopwatch" />
+    <MESSAGE value="corrected billing table" />
+    <option name="LAST_COMMIT_MESSAGE" value="corrected billing table" />
   </component>
 </project>
