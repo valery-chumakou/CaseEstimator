@@ -10,10 +10,10 @@ public class Billing extends Client{
     private String user;
     private String officeNo;
     private LocalDate date;
-    private Double sum;
+    private double sum;
     private Billing_Table_Records billingTableRecords;
 
-    public Billing(int rate, String tasks, LocalTime timeSpent, String user, String officeNo, LocalDate date, Double sum) {
+    public Billing(int rate, String tasks, LocalTime timeSpent, String user, String officeNo, LocalDate date, double sum) {
         this.rate = rate;
         this.tasks = tasks;
         this.timeSpent = timeSpent;
@@ -23,11 +23,11 @@ public class Billing extends Client{
         this.sum = sum;
     }
 
-    public Double getSum() {
+    public double getSum() {
         return sum;
     }
 
-    public void setSum(Double sum) {
+    public void setSum(double sum) {
         this.sum = sum;
     }
 
@@ -81,3 +81,4 @@ public class Billing extends Client{
 
 
 }
+

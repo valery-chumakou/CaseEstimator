@@ -60,7 +60,7 @@
                         <Font size="11.0" />
                      </font>
                   </Label>
-                  <Button fx:id="payments_btn" layoutX="79.0" layoutY="301.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="122.0" styleClass="clients_table_btn" stylesheets="@main.css" text="Payments" />
+                  <Button fx:id="payments_btn" layoutX="79.0" layoutY="301.0" mnemonicParsing="false" onAction="#openPayments" prefHeight="29.0" prefWidth="122.0" styleClass="clients_table_btn" stylesheets="@main.css" text="Payments" />
                   <Label layoutX="31.0" layoutY="157.0" prefHeight="36.0" prefWidth="35.0" styleClass="dashboard_lbl" stylesheets="@main.css" text=" " />
                   <Label layoutX="27.0" layoutY="207.0" prefHeight="36.0" prefWidth="42.0" styleClass="clients_lbl" stylesheets="@main.css" text=" " />
                   <Label layoutX="27.0" layoutY="341.0" prefHeight="36.0" prefWidth="42.0" styleClass="about_lbl" stylesheets="@main.css" text=" " />

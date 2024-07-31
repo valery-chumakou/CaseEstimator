@@ -2,14 +2,19 @@ package org.example.caseestimator;
 
 import javafx.animation.*;
 import javafx.application.Platform;
+import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.*;
@@ -17,10 +22,7 @@ import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
-import java.time.temporal.ChronoUnit;
-import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
 
 public class Billing_Table_Records {
     private String loggedInUser;
@@ -44,7 +46,7 @@ public class Billing_Table_Records {
     @FXML
     private TableColumn<Billing, String> col_date;
     @FXML
-    private TableColumn<Billing, Double>col_sum;
+    private TableColumn<Billing, Double> col_sum;
     @FXML
     private TextField rate_field;
     private Timeline timer;
@@ -82,12 +84,13 @@ public class Billing_Table_Records {
     public Billing_Table_Records() {
 
     }
+
     public Billing_Table_Records(String user) {
         this.loggedInUser = getLoggedInUser;
     }
 
     public void initialize(String officeNo, ObservableList<Billing> billingList) throws IOException {
-         this.officeNo = officeNo;
+        this.officeNo = officeNo;
         this.loggedInUser = UserStore.getLoggedInUser();
         col_no.setCellValueFactory(new PropertyValueFactory<>("officeNo"));
         col_rate.setCellValueFactory(new PropertyValueFactory<>("rate"));
@@ -95,8 +98,7 @@ public class Billing_Table_Records {
         col_date.setCellValueFactory(new PropertyValueFactory<>("date"));
         col_user.setCellValueFactory(new PropertyValueFactory<>("user"));
         col_time.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getTimeSpent().toString()));
-        col_sum.setCellValueFactory(new PropertyValueFactory<>("Sum"));
-        retrieveBillingData(officeNo); //
+        col_sum.setCellValueFactory(cellData -> new SimpleDoubleProperty(cellData.getValue().getSum()).asObject());        retrieveBillingData(officeNo); //
         populateBillingTable();
         // Clear existing data
 
@@ -113,61 +115,39 @@ public class Billing_Table_Records {
         });
     }
 
+    @FXML
+    public void addTask(ActionEvent actionEvent) throws IOException {
+        Platform.runLater(() -> {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("add_task.fxml"));
+            Parent root = null;
+            try {
+                root = loader.load();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            Add_Task_Controller addTaskController = loader.getController();
+            addTaskController.setUser(loggedInUser);
+            addTaskController.setOfficeNo(officeNo);
 
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.showAndWait();
+        });
+    }
+
+    public void showCurrentAmount() throws IOException {
+        double totalAmount = 0.0;
+        for (Billing billing : billingList) {
+            totalAmount+= billing.getSum();
+        }
+        outst_amount.setText(String.format("%.2f",totalAmount));
+
+
+    }
     public void populateBillingTable() {
         billing_table_records.setItems(billingList);
 
     }
-
-    @FXML
-    public void insertBillingInfo() {
-        stopwatch.stopTimer();
-        int totalSeconds = (int) ChronoUnit.SECONDS.between(startTime, Instant.now());
-        int hours = totalSeconds / 3600;
-        int minutes = (totalSeconds % 3600) / 60;
-        int seconds = totalSeconds % 60;
-        String timeSpentString = String.format("%02d:%02d:%02d", hours, minutes, seconds);
-        String rateString = rate_field.getText();
-        try {
-            int rate = Integer.parseInt(rate_field.getText());
-
-            if (rate <= 0) {
-                System.out.println("Invalid rate. Please enter a positive integer.");
-                return;
-            }
-            String tasks = menu_btn.getValue();
-            try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/CaseEstimator", "root", "BostonVenyaGlobe9357");
-                 PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO billing (rate, tasks, time_spent, office_number, user, date) VALUES (?, ?, ?, ?, ?, ?);")) {
-                preparedStatement.setInt(1, rate);
-                preparedStatement.setString(2, tasks);
-                preparedStatement.setString(3, timeSpentString);
-                preparedStatement.setString(4, officeNo);
-                preparedStatement.setString(5, loggedInUser);
-                preparedStatement.setDate(6, Date.valueOf(LocalDate.now()));
-
-                LocalTime timeSpent = LocalTime.parse(timeSpentString, DateTimeFormatter.ofPattern("HH:mm:ss"));
-
-                int rowsInserted = preparedStatement.executeUpdate();
-                if (rowsInserted > 0) {
-                    System.out.println("Billing information inserted successfully.");
-                    Platform.runLater(() -> {
-                        // Update your UI here
-                        // For example:
-                        billingList.add(new Billing(rate, tasks, timeSpent, loggedInUser, officeNo, LocalDate.now(), (double) sum));
-                    });
-                }
-            }
-            LocalTime timeSpent = LocalTime.parse(timeSpentString, DateTimeFormatter.ofPattern("HH:mm:ss"));
-            User user = new User(loggedInUser);
-            Billing newBilling = new Billing(rate, tasks, timeSpent, loggedInUser, officeNo, LocalDate.now(), (double) sum);
-            billingList.add(newBilling);
-            billing_table_records.setItems(billingList);
-            populateBillingTable();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
 
 
     public void retrieveBillingData(String officeNumber) throws IOException {
@@ -187,18 +167,24 @@ public class Billing_Table_Records {
                 String userName = resultSet.getString("user");
                 String date = resultSet.getString("date");
                 LocalTime timeSpent = LocalTime.parse(timeSpentString, DateTimeFormatter.ofPattern("HH:mm:ss"));
-                User user = new User(userName);
+                User user = new User(userName, rate);
+                double sum = resultSet.getDouble("sum");
+
 
                 if (date != null) {
                     Billing billing = new Billing(rate, tasks, timeSpent, userName, officeNumber, LocalDate.parse(date), (double) sum);
                     billingList.add(billing); // Add the Billing object to the observable list
                 }
             }
+            Platform.runLater(() -> {
+                billing_table_records.setItems(billingList);
+                populateBillingTable(); // Ensure to refresh the UI with the new data
+            });
         } catch (SQLException e) {
-            System.err.println("Error retrieving billing data: " + e.getMessage());
+            billing_table_records.setItems(billingList); // Set the updated list to the table view
+            populateBillingTable();
         }
-        billing_table_records.setItems(billingList); // Set the updated list to the table view
-        populateBillingTable();
+        showCurrentAmount();
     }
     public void refreshTable() {
         billing_table_records.setItems(billingList);

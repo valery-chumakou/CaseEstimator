@@ -19,6 +19,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalTime;
+import java.time.Period;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -45,8 +46,8 @@ public class Main_Controller implements Initializable {
     private boolean isClientsBtnSelected = false;
     private boolean isDashboardBtnSelected = false;
     LocalTime currentTime = LocalTime.now();
-
-
+    @FXML
+    private Button payments_btn;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
@@ -131,6 +132,13 @@ public class Main_Controller implements Initializable {
         updateButtonStyles();
     }
 
+    @FXML
+    private void openPayments(ActionEvent actionEvent) throws IOException {
+        main_panel.getChildren().clear();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("payments.fxml"));
+        Parent parent = loader.load();
+        main_panel.getChildren().add(parent);
+    }
     private void updateButtonStyles() {
         about_btn.setStyle(getButtonStyle(isAboutBtnSelected));
         clients_btn.setStyle(getButtonStyle(isClientsBtnSelected));
