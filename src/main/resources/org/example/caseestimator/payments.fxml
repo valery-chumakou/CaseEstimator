@@ -12,11 +12,9 @@
       <TableView fx:id="paymentsTableView" layoutX="100.0" layoutY="55.0" prefHeight="322.0" prefWidth="614.0" styleClass="table_view" stylesheets="@billing_table_records.css">
          <columns>
             <TableColumn fx:id="col_no" prefWidth="86.66668701171875" styleClass="column-header" text="Office No" />
-            <TableColumn fx:id="col_name" prefWidth="83.33334350585938" styleClass="column-header" text="Name" />
-            <TableColumn fx:id="col_user" prefWidth="90.66668701171875" styleClass="column-header" text="User" />
-            <TableColumn fx:id="col_owned" prefWidth="115.99996948242188" styleClass="column-header" text="Total Owned" />
-            <TableColumn fx:id="col_paid" prefWidth="91.99996948242188" styleClass="column-header" text="Total Paid" />
-            <TableColumn fx:id="col_date" prefWidth="132.0" styleClass="column-header" text="Date " />
+            <TableColumn fx:id="col_name" prefWidth="216.00001525878906" styleClass="column-header" text="Name" />
+            <TableColumn fx:id="col_owned" prefWidth="149.99996948242188" styleClass="column-header" text="Total Owned" />
+            <TableColumn fx:id="col_paid" prefWidth="149.99993896484375" styleClass="column-header" text="Total Paid" />
          </columns>
       </TableView>
       <Pane layoutX="1.0" prefHeight="44.0" prefWidth="716.0" styleClass="top-panel" stylesheets="@billing_table_records.css">

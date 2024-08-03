@@ -2,6 +2,7 @@ package org.example.caseestimator;
 
 import javafx.animation.*;
 import javafx.application.Platform;
+import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -25,7 +26,7 @@ import java.util.concurrent.ScheduledExecutorService;
 
 public class Billing_Table_Records {
     private String loggedInUser;
-    private ObservableList<Billing> billingList = FXCollections.observableArrayList();
+    private final ObservableList<Billing> billingList = FXCollections.observableArrayList();
     @FXML
     private TableView<Billing> billing_table_records;
     @FXML
@@ -45,7 +46,7 @@ public class Billing_Table_Records {
     @FXML
     private TableColumn<Billing, String> col_date;
     @FXML
-    private TableColumn<Billing, Double>col_sum;
+    private TableColumn<Billing, Double> col_sum;
     @FXML
     private TextField rate_field;
     private Timeline timer;
@@ -83,12 +84,13 @@ public class Billing_Table_Records {
     public Billing_Table_Records() {
 
     }
+
     public Billing_Table_Records(String user) {
         this.loggedInUser = getLoggedInUser;
     }
 
     public void initialize(String officeNo, ObservableList<Billing> billingList) throws IOException {
-         this.officeNo = officeNo;
+        this.officeNo = officeNo;
         this.loggedInUser = UserStore.getLoggedInUser();
         col_no.setCellValueFactory(new PropertyValueFactory<>("officeNo"));
         col_rate.setCellValueFactory(new PropertyValueFactory<>("rate"));
@@ -96,8 +98,7 @@ public class Billing_Table_Records {
         col_date.setCellValueFactory(new PropertyValueFactory<>("date"));
         col_user.setCellValueFactory(new PropertyValueFactory<>("user"));
         col_time.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getTimeSpent().toString()));
-        col_sum.setCellValueFactory(new PropertyValueFactory<>("Sum"));
-        retrieveBillingData(officeNo); //
+        col_sum.setCellValueFactory(cellData -> new SimpleDoubleProperty(cellData.getValue().getSum()).asObject());        retrieveBillingData(officeNo); //
         populateBillingTable();
         // Clear existing data
 
@@ -113,24 +114,40 @@ public class Billing_Table_Records {
             }
         });
     }
-@FXML
-    public void addTask(ActionEvent actionEvent) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("add_task.fxml"));
-        Parent root = loader.load();
-        Add_Task_Controller addTaskController = loader.getController();
-        addTaskController.setUser(loggedInUser);
 
-        Stage stage = new Stage();
-        stage.setScene(new Scene(root));
-        stage.showAndWait();
+    @FXML
+    public void addTask(ActionEvent actionEvent) throws IOException {
+        Platform.runLater(() -> {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("add_task.fxml"));
+            Parent root = null;
+            try {
+                root = loader.load();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            Add_Task_Controller addTaskController = loader.getController();
+            addTaskController.setUser(loggedInUser);
+            addTaskController.setOfficeNo(officeNo);
+
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.showAndWait();
+        });
     }
 
+    public void showCurrentAmount() throws IOException {
+        double totalAmount = 0.0;
+        for (Billing billing : billingList) {
+            totalAmount+= billing.getSum();
+        }
+        outst_amount.setText(String.format("%.2f",totalAmount));
+
+
+    }
     public void populateBillingTable() {
         billing_table_records.setItems(billingList);
 
     }
-
-
 
 
     public void retrieveBillingData(String officeNumber) throws IOException {
@@ -151,26 +168,28 @@ public class Billing_Table_Records {
                 String date = resultSet.getString("date");
                 LocalTime timeSpent = LocalTime.parse(timeSpentString, DateTimeFormatter.ofPattern("HH:mm:ss"));
                 User user = new User(userName, rate);
+                double sum = resultSet.getDouble("sum");
+
 
                 if (date != null) {
                     Billing billing = new Billing(rate, tasks, timeSpent, userName, officeNumber, LocalDate.parse(date), (double) sum);
                     billingList.add(billing); // Add the Billing object to the observable list
                 }
             }
+            Platform.runLater(() -> {
+                billing_table_records.setItems(billingList);
+                populateBillingTable(); // Ensure to refresh the UI with the new data
+            });
         } catch (SQLException e) {
-            System.err.println("Error retrieving billing data: " + e.getMessage());
+            billing_table_records.setItems(billingList); // Set the updated list to the table view
+            populateBillingTable();
         }
-        billing_table_records.setItems(billingList); // Set the updated list to the table view
-        populateBillingTable();
+        showCurrentAmount();
     }
     public void refreshTable() {
         billing_table_records.setItems(billingList);
     }
 
-    public Billing_Table_Records(String officeNo, ObservableList<Billing>billingList) {
-        this.officeNo = officeNo;
-        this.billingList = billingList;
-    }
 
     public void setLoggedInUser(String user) {
         this.loggedInUser = UserStore.getLoggedInUser();

@@ -2,49 +2,19 @@ package org.example.caseestimator;
 
 import java.time.LocalDate;
 
-public class Payments   {
-    private String user;
-    private String officeNo;
-    private LocalDate date;
+public class Payments extends Client {
+
+
+
     private double total_owned;
     private double total_outstanding;
-    private String first_name;
-    private String last_name;
-    private String business_name;
 
-    public Payments(String user, String officeNo, LocalDate date, double total_owned, double total_outstanding, String first_name, String last_name, String business_name) {
-        this.user = user;
-        this.officeNo = officeNo;
-        this.date = date;
-        this.total_owned = total_owned;
+    private Client client;
+
+    public Payments( double total_owned, double total_outstanding, Client client) {
+         this.total_owned = total_owned;
         this.total_outstanding = total_outstanding;
-        this.first_name = first_name;
-        this.last_name = last_name;
-        this.business_name = business_name;
-    }
-
-    public String getUser() {
-        return user;
-    }
-
-    public void setUser(String user) {
-        this.user = user;
-    }
-
-    public String getOfficeNo() {
-        return officeNo;
-    }
-
-    public void setOfficeNo(String officeNo) {
-        this.officeNo = officeNo;
-    }
-
-    public LocalDate getDate() {
-        return date;
-    }
-
-    public void setDate(LocalDate date) {
-        this.date = date;
+        this.client = client;
     }
 
     public double getTotal_owned() {
@@ -63,27 +33,11 @@ public class Payments   {
         this.total_outstanding = total_outstanding;
     }
 
-    public String getFirst_name() {
-        return first_name;
+    public Client getClient() {
+        return client;
     }
 
-    public void setFirst_name(String first_name) {
-        this.first_name = first_name;
-    }
-
-    public String getLast_name() {
-        return last_name;
-    }
-
-    public void setLast_name(String last_name) {
-        this.last_name = last_name;
-    }
-
-    public String getBusiness_name() {
-        return business_name;
-    }
-
-    public void setBusiness_name(String business_name) {
-        this.business_name = business_name;
+    public void setClient(Client client) {
+        this.client = client;
     }
 }
