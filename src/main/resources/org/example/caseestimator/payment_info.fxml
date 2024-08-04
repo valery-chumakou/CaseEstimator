@@ -5,10 +5,10 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Text?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="380.0" prefWidth="580.0" styleClass="body" stylesheets="@new_client.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.caseestimator.New_Client_Controller">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="380.0" prefWidth="580.0" styleClass="body" stylesheets="@new_client.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.caseestimator.Payment_Info_Controller">
    <children>
-      <Button fx:id="pay_btn" layoutX="322.0" layoutY="326.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="78.0" styleClass="save_btn" stylesheets="@new_client.css" text="Pay" />
-      <Button fx:id="close_btn" layoutX="414.0" layoutY="326.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="78.0" styleClass="save_btn" stylesheets="@new_client.css" text="Close" />
+      <Button fx:id="pay_btn" layoutX="322.0" layoutY="326.0" mnemonicParsing="false" onAction="#handlePayButtonAction" prefHeight="25.0" prefWidth="78.0" styleClass="save_btn" stylesheets="@new_client.css" text="Pay" />
+      <Button fx:id="close_btn" layoutX="414.0" layoutY="326.0" mnemonicParsing="false" onAction="#handleCloseButtonAction" prefHeight="25.0" prefWidth="78.0" styleClass="save_btn" stylesheets="@new_client.css" text="Close" />
       <TextField fx:id="card_number_fld" layoutX="140.0" layoutY="42.0" />
       <TextField fx:id="exp_fld" layoutX="140.0" layoutY="86.0" prefHeight="25.0" prefWidth="149.0" />
       <Text layoutX="41.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Card Number" wrappingWidth="98.13668823242188" />

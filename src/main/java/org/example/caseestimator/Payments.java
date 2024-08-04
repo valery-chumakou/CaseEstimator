@@ -9,12 +9,55 @@ public class Payments {
     private SimpleDoubleProperty total_paid;
     private SimpleObjectProperty<Client> client; // Use SimpleObjectProperty for the Client
     private SimpleDoubleProperty total_owned; // Use SimpleDoubleProperty for totalOwned
+    private double amount;
+    private String cardNumber;
+    private String cvv;
+    private String expiryDate;
 
 
     public Payments(Client client, double total_owned, double total_paid) {
         this.client = new SimpleObjectProperty<>(client);
         this.total_owned = new SimpleDoubleProperty(total_owned);
         this.total_paid = new SimpleDoubleProperty(total_paid);
+    }
+
+    public Payments(double amount, String cardNumber, String cvv, String expiryDate) {
+        this.amount = amount;
+        this.cardNumber = cardNumber;
+        this.cvv = cvv;
+        this.expiryDate = expiryDate;
+    }
+
+    public double getAmount() {
+        return amount;
+    }
+
+    public void setAmount(double amount) {
+        this.amount = amount;
+    }
+
+    public String getCardNumber() {
+        return cardNumber;
+    }
+
+    public void setCardNumber(String cardNumber) {
+        this.cardNumber = cardNumber;
+    }
+
+    public String getCvv() {
+        return cvv;
+    }
+
+    public void setCvv(String cvv) {
+        this.cvv = cvv;
+    }
+
+    public String getExpiryDate() {
+        return expiryDate;
+    }
+
+    public void setExpiryDate(String expiryDate) {
+        this.expiryDate = expiryDate;
     }
 
     public void setClient(Client client) {

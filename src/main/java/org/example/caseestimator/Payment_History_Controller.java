@@ -34,12 +34,18 @@ public class Payment_History_Controller {
     @FXML
     private Button payment_btn;
     @FXML
-    private TableView<?> payment_history;
+    private TableView<Payments> payment_history;
+    private String loggedInUser;
+
+
+
 
     public void makePayment(ActionEvent actionEvent) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("payment_info.fxml"));
             Parent root = loader.load();
+            Payment_Info_Controller paymentInfoController = loader.getController();
+            paymentInfoController.setLoggedInUser(loggedInUser);
             Stage paymentStage = new Stage();
             paymentStage.setTitle("Payment");
             paymentStage.initModality(Modality.WINDOW_MODAL);
@@ -50,4 +56,10 @@ public class Payment_History_Controller {
             throw new RuntimeException(e);
         }
     }
+
+    public void setLoggedInUser(String user) {
+        this.loggedInUser = user;
+    }
+
+
 }
