@@ -135,13 +135,14 @@ public class Billing_Table_Records {
         });
     }
 
-    public void showCurrentAmount() throws IOException {
+    public double showCurrentAmount() throws IOException {
         double totalAmount = 0.0;
         for (Billing billing : billingList) {
             totalAmount+= billing.getSum();
         }
         outst_amount.setText(String.format("%.2f",totalAmount));
 
+        return totalAmount;
 
     }
     public void populateBillingTable() {

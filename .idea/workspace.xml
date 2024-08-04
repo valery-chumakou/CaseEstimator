@@ -4,13 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5f42c5f1-9c5f-4d25-ad49-5f9a9f6b6a7b" name="Changes" comment="corrected billing table">
+    <list default="true" id="5f42c5f1-9c5f-4d25-ad49-5f9a9f6b6a7b" name="Changes" comment="added payment table">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/caseestimator/Add_Task_Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/caseestimator/Add_Task_Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/caseestimator/Billing_Table_Records.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/caseestimator/Billing_Table_Records.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/caseestimator/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/caseestimator/Client.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/caseestimator/Payments.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/caseestimator/Payments.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/caseestimator/Payments_Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/caseestimator/Payments_Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/caseestimator/payments.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/caseestimator/payments.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -156,7 +155,15 @@
       <option name="project" value="LOCAL" />
       <updated>1722401384484</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="added payment table">
+      <option name="closed" value="true" />
+      <created>1722723988620</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1722723988620</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -166,6 +173,7 @@
     <MESSAGE value="stopwatch for tasks added" />
     <MESSAGE value="payments class created" />
     <MESSAGE value="corrected billing table" />
-    <option name="LAST_COMMIT_MESSAGE" value="corrected billing table" />
+    <MESSAGE value="added payment table" />
+    <option name="LAST_COMMIT_MESSAGE" value="added payment table" />
   </component>
 </project>
