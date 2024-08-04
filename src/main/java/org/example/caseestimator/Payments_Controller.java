@@ -5,12 +5,20 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
 import java.util.ResourceBundle;
@@ -52,6 +60,14 @@ public class Payments_Controller implements Initializable {
         col_owned.setCellValueFactory(param -> new SimpleDoubleProperty(param.getValue().getTotalOwned()).asObject());
         col_paid.setCellValueFactory(param -> new SimpleObjectProperty<>(param.getValue().getTotal_paid()));
 
+        paymentsTableView.setOnMouseClicked((MouseEvent event) -> {
+            if (event.getButton() == MouseButton.PRIMARY && event.getClickCount() == 2) {
+                Payments selectedPayment = paymentsTableView.getSelectionModel().getSelectedItem();
+                if (selectedPayment != null) {
+                    openPaymentHistory();
+                }
+            }
+        });
         populateTable(); // Populate table on initialization
 
     }
@@ -111,6 +127,20 @@ public class Payments_Controller implements Initializable {
             pstmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
+        }
+    }
+
+    private void openPaymentHistory() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("payment_history.fxml"));
+            Pane pane = loader.load();
+            Stage stage = new Stage();
+            stage.setTitle("Payment Info");
+            stage.setScene(new Scene(pane));
+            Payment_History_Controller controller = loader.getController();
+            stage.show();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 

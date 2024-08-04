@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.Pane?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="583.0" prefWidth="948.0" styleClass="body" stylesheets="@billing_table_records.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.caseestimator.Payment_History_Controller">
+   <children>
+      <TableView fx:id="payment_history" layoutX="100.0" layoutY="55.0" prefHeight="322.0" prefWidth="614.0" styleClass="table_view" stylesheets="@billing_table_records.css">
+         <columns>
+            <TableColumn fx:id="col_time" prefWidth="75.0" text="Time" />
+            <TableColumn fx:id="col_date" prefWidth="142.66671752929688" styleClass="column-header" text="Date" />
+            <TableColumn fx:id="col_user" prefWidth="145.33328247070312" styleClass="column-header" text="User" />
+            <TableColumn fx:id="col_amount" prefWidth="89.33331298828125" styleClass="column-header" text="Amount" />
+            <TableColumn fx:id="col_type" prefWidth="150.0" styleClass="column-header" text="Type" />
+         </columns>
+      </TableView>
+      <Pane layoutX="1.0" prefHeight="44.0" prefWidth="716.0" styleClass="top-panel" stylesheets="@billing_table_records.css">
+         <children>
+            <Label fx:id="out_lbl1" layoutX="14.0" layoutY="9.0" prefHeight="21.0" prefWidth="183.0" styleClass="out_lbl" stylesheets="@billing_table_records.css" text="Amount Paid" />
+            <Label fx:id="amount_paid" layoutX="133.0" layoutY="5.0" prefHeight="34.0" prefWidth="114.0" styleClass="outst_amount" stylesheets="@billing_table_records.css" text="= " />
+         </children>
+      </Pane>
+      <Button fx:id="payment_btn" layoutX="159.0" layoutY="418.0" mnemonicParsing="false" onAction="#makePayment" prefHeight="29.0" prefWidth="151.0" styleClass="calculate_btn" stylesheets="@billing_table_records.css" text="Make a payment" />
+   </children>
+   <effect>
+      <DropShadow />
+   </effect>
+</Pane>
